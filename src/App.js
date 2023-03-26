@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import Login from "./components/Login";
+import Home from "./components/Home";
+import { useDispatch , useSelector } from "react-redux";
+import { setToken } from "./utils/homeSlice";
 
 function App() {
+  const dispatch = useDispatch();
+  const {token } = useSelector(state=>state.home);
+  useEffect(()=>{
+       const hash = window.location.hash ;
+      
+       if(hash){
+        const tokenString  = hash.substring(1).split("&")[0].split("=")[1];
+          dispatch(setToken(tokenString));
+       }
+  },[dispatch,token]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {token?<Home></Home>:<Login />}
     </div>
   );
 }
