@@ -6,7 +6,7 @@ function Login() {
 
     const handleClick = ()=>{
         const clientId ="b6bb6404d9f14e8baea6cc4df354f6f9";
-        const redirectUrl = "http://localhost:3000/";
+        const redirectUrl = "https://main--sage-macaron-0ce105.netlify.app/";
         const apiUrl = "https://accounts.spotify.com/authorize";
         const scope = [
             "user-read-email",
