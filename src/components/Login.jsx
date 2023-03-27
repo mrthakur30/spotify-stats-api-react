@@ -9,14 +9,26 @@ function Login() {
         const redirectUrl = "https://main--sage-macaron-0ce105.netlify.app/";
         const apiUrl = "https://accounts.spotify.com/authorize";
         const scope = [
-            "user-read-email",
             "user-read-private",
+            "user-read-email",
             "user-read-playback-state",
-            "user-modify-playback-state",
-            "user-read-currently-playing",
-            "user-read-playback-position",
             "user-top-read",
-            "user-read-recently-played"
+            "user-read-currently-playing",
+            "user-read-recently-played",
+            "user-read-playback-position",
+            "user-modify-playback-state",
+            "user-read-playback-state",
+            "user-read-currently-playing",
+            "user-read-recently-played",
+            "user-read-playback-position",
+            "user-read-playback-state",
+            "user-read-currently-playing",
+            "user-read-recently-played",
+            "user-read-playback-position",
+            "user-read-playback-state",
+            "user-read-currently-playing",
+            "user-read-recently-played",
+            "user-read-playback-position",
         ];
         window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scope.join(" ")}&response_type=token&show_dialog=true`;
     };
