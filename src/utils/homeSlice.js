@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     token:null,
     userInfo : null ,
-    
+    expireTime : null,
     topTracksWeek :[],
     topTracksMonth : [],
     topTracksYear : [],
-
+    tab : "home",
     topArtistsWeek : [],
     topArtistsMonth : [],
     topArtistsYear : [],
@@ -30,6 +30,10 @@ const homeSlice = createSlice({
             state.userInfo = action.payload ; 
         },
         
+        setExpireTime:(state,action)=>{
+            state.expireTime = action.payload ;
+        },
+
         setTopTracksWeek:(state,action)=>{
             state.topTracksWeek = action.payload ;
         },
@@ -53,9 +57,12 @@ const homeSlice = createSlice({
         setTopArtistsYear:(state,action)=>{ 
             state.topArtistsYear = action.payload ;
         },
+        setTab:(state,action)=>{ 
+            state.tab = action.payload ;
+        },
     }
 });
 
-export const {setToken ,setUserInfo ,setTopTracksWeek , setTopArtistsMonth ,setTopArtistsWeek ,setTopArtistsYear ,setTopTracksYear ,setTopTracksMonth} = homeSlice.actions ;
+export const {setToken ,setUserInfo, setTab ,setTopTracksWeek,setExpireTime, setTopArtistsMonth ,setTopArtistsWeek ,setTopArtistsYear ,setTopTracksYear ,setTopTracksMonth} = homeSlice.actions ;
 
 export default homeSlice.reducer ;

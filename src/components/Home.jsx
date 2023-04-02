@@ -6,12 +6,12 @@ import { setUserInfo ,setTopTracksWeek , setTopArtistsMonth ,setTopArtistsWeek ,
 import TopArtists from './Top Artists/TopArtists'
 import { motion } from 'framer-motion'
 import TopTracks from "./TopTracks/TopTracks";
-
+import Navbar from './partials/Navbar'
 function Home() {
     const dispatch = useDispatch();
-    const {token , userInfo} = useSelector(state=>state.home);
+    const {token , userInfo,tab} = useSelector(state=>state.home);
+
     useEffect(()=>{
-        
         const getUserInfo = async()=>{
            const response = await axios.get(
             "https://api.spotify.com/v1/me",
@@ -183,47 +183,40 @@ function Home() {
         getTopTracksWeek();
         getTopTracksYear();
 
-   },[token,dispatch]) 
+   },[dispatch,token]);
 
   if(userInfo===null) return ;
   const { userName , imgUrl} = userInfo ;
-
+ 
   return (
     <div>
-       <div id='home' className='flex  gap-16 justify-center items-center h-screen'>
-          <div className=" flex mx-4 flex-col gap-10 md:bg-black bg-opacity-20 rounded-md  shadow-md hover:bg-opacity-30 duration-200  justify-center items-center md:w-1/4 md:h-2/3">
-          <motion.button
-          whileHover={{scale:1.1}}
-          whileTap={{scale:0.9}}
-           class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-              <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-               Your Top Artists
-              </span>
-          </motion.button>
+      <Navbar />
+     {tab==="home" &&
+      <div id='home' className='flex  gap-16 justify-center items-center h-screen'>
           
-          <motion.button
-          whileHover={{scale:1.1}}
-          whileTap={{scale:0.9}}
-           class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400">
-            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                Your Top Songs
-            </span>
-          </motion.button>
-
-          </div>
-          <div className=" flex flex-col gap-10 p-16 bg-black backdrop-blur-2xl  duration-200 hover:bg-opacity-30  shadow-md rounded-md bg-opacity-20 justify-center items-center h-2/3">
-                  <motion.img 
-                   whileHover={{scale:1.1}}
-                   whileTap={{scale:0.9}}
-                  src={imgUrl} className='rounded-full' />
-                  <span className='text-5xl  hover:  text-white duration-150 ease-in-out  font-bold  '>{userName}</span>
-          </div>
+        <div className=" flex flex-col gap-10 p-16 bg-black backdrop-blur-2xl  duration-200 hover:bg-opacity-30  shadow-md rounded-md bg-opacity-20 justify-center items-center h-2/3">
+              <motion.img 
+               whileHover={{scale:1.1}}
+               whileTap={{scale:0.9}}
+              src={imgUrl} className='rounded-full' />
+              <span className='text-5xl  hover:  text-white duration-150 ease-in-out  font-bold  '>{userName}</span>
       </div>
-      <TopTracks></TopTracks>
-      <TopArtists></TopArtists>
+     </div>
+     }
+     {tab==="songs"&&    <TopTracks></TopTracks> }
+     {tab==="artists"&&  <TopArtists></TopArtists>}
+
+
     </div>
    
   )
 }
 
+
+
+
 export default Home
+
+
+
+

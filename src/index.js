@@ -3,7 +3,16 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import {store} from './store';
 import { Provider } from 'react-redux';
-
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  Link,
+  Outlet,
+  useParams,
+  NavLink,
+} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -11,7 +20,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App></App>
+     <Router>
+        <Routes>
+          <Route path="/" element={<App/>} />
+        </Routes>
+     </Router>,
     </Provider> 
   </React.StrictMode>
 );

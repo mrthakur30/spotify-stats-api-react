@@ -6,29 +6,16 @@ function Login() {
 
     const handleClick = ()=>{
         const clientId ="b6bb6404d9f14e8baea6cc4df354f6f9";
-        const redirectUrl = "https://main--dashing-bublanina-abf290.netlify.app/";
+        //const redirectUrl = "http://localhost:3000/";
+        const redirectUrl = "https://dashing-bublanina-abf290.netlify.app/";
         const apiUrl = "https://accounts.spotify.com/authorize";
+      
         const scope = [
             "user-read-private",
             "user-read-email",
             "user-read-playback-state",
             "user-top-read",
             "user-read-currently-playing",
-            "user-read-recently-played",
-            "user-read-playback-position",
-            "user-modify-playback-state",
-            "user-read-playback-state",
-            "user-read-currently-playing",
-            "user-read-recently-played",
-            "user-read-playback-position",
-            "user-read-playback-state",
-            "user-read-currently-playing",
-            "user-read-recently-played",
-            "user-read-playback-position",
-            "user-read-playback-state",
-            "user-read-currently-playing",
-            "user-read-recently-played",
-            "user-read-playback-position",
         ];
         window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scope.join(" ")}&response_type=token&show_dialog=true`;
     };
