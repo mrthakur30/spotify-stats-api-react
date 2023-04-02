@@ -18,12 +18,13 @@ function Navbar() {
   }
   function logOut(){
       dispatch(setToken(null))
+      window.location = "";
   }
   dispatch(setTab(state));
   console.log(state);
 
   return (
-    <div className=" flex flex-row md:gap-10  gap-4 bg-slate-800  w-full py-3  shadow-md  duration-200  justify-center items-center ">
+    <div className=" fixed z-10 flex flex-row md:gap-10  gap-4 bg-slate-800  w-full py-3  shadow-md  duration-200  justify-center items-center ">
        <HomeIcon  
        className=' invert h-10 md:absolute md:left-10 md:py-0 py-2.5 hover:py-0 duration-150 hover:opacity-50'
        onClick={showHome}

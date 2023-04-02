@@ -12,7 +12,7 @@ function TopTracks() {
            <div className="py-4 px-4 md:px-8 dark:bg-gray-900">
       <ul
         role="tablist"
-        className="flex flex-row justify-center  max-w-screen-xl mx-auto px-2.5 items-center gap-x-3 overflow-x-auto text-sm bg-gray-50 dark:bg-slate-800 rounded-lg sm:flex"
+        className="flex flex-row justify-center   md:w-1/2   mt-20 mx-auto px-2.5 items-center gap-x-3 overflow-x-auto text-sm bg-gray-50 dark:bg-slate-800 rounded-lg sm:flex"
       >
         <li className="py-2">
           <button
