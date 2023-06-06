@@ -15,7 +15,7 @@ function Card({index,name,image,genres}) {
      </p>
      
      <div class="inline-flex items-center text-lg font-semibold text-gray-900 duration-100 dark:text-orange-200 hover:text-orange-300">
-     {genres[0].toUpperCase()}
+     {genres[0]}
      </div>
 
 </div>
