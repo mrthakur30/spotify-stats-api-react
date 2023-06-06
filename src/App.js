@@ -16,7 +16,7 @@ function App() {
           dispatch(setToken(tokenString));
           console.log(tokenString);
        }
-      // window.location.hash = "";
+       window.location.hash = "";
                                  
   },[dispatch,token]);
   
